@@ -1,0 +1,9 @@
+# PostgreSQL Configuration
+postgres_host     = "your-postgres-host.example.com"
+postgres_port     = "5432"
+postgres_database = "n8n"
+postgres_user     = "n8n"
+postgres_password = "your-secure-password"
+
+# N8N Configuration
+n8n_encryption_key = "your-32-character-encryption-key"
