@@ -12,10 +12,18 @@ resource "helm_release" "ingress-nginx" {
   version    = "4.14.0"
   namespace  = kubernetes_namespace.ingress_nginx.metadata[0].name
 
-  set = [{
-    name  = "controller.publishService.enabled"
-    value = "true"
-  }]
+  set = [
+    {
+      name  = "controller.publishService.enabled"
+      value = "true"
+    },
+    // Expose Redis port via the ingress controller, {namespace}/{service}:{port}
+    {
+      name  = "tcp.6379"
+      value = "app-redis/redis:6379"
+    }
+  ]
+
   timeout = 600
 
   depends_on = [kubernetes_namespace.ingress_nginx]
@@ -69,8 +77,8 @@ resource "helm_release" "external_dns" {
       value = "sync"
     },
     {
-        name  = "domainFilters[0]"
-        value = var.root_domain
+      name  = "domainFilters[0]"
+      value = var.root_domain
     }
   ]
 
