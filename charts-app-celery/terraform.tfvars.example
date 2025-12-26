@@ -1,0 +1,3 @@
+redis_broker_url="redis://:password@domain.com:6379/0"
+
+redis_result_backend="redis://:password@omain.com:6379/1"
