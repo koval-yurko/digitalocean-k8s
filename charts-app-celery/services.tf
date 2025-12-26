@@ -30,7 +30,7 @@ resource "kubernetes_service" "service-2" {
 
   spec {
     selector = {
-      app = kubernetes_deployment.service-1.spec[0].template[0].metadata[0].labels["app"]
+      app = kubernetes_deployment.service-2.spec[0].template[0].metadata[0].labels["app"]
     }
 
     port {

@@ -23,7 +23,7 @@ resource "kubernetes_deployment" "worker" {
       spec {
         container {
           name  = "worker"
-          image = "failwin/celery-example-worker:0.0.4"
+          image = "failwin/celery-example-worker:0.0.5"
 
           env {
             name  = "REDIS_BROKER_URL"
@@ -76,7 +76,7 @@ resource "kubernetes_deployment" "service-1" {
       spec {
         container {
           name  = "service-1"
-          image = "failwin/celery-example-service-1:0.0.4"
+          image = "failwin/celery-example-service-1:0.0.5"
 
           port {
             container_port = 8000
@@ -133,7 +133,7 @@ resource "kubernetes_deployment" "service-2" {
       spec {
         container {
           name  = "service-2"
-          image = "failwin/celery-example-service-2:0.0.4"
+          image = "failwin/celery-example-service-2:0.0.5"
 
           port {
             container_port = 8000
@@ -190,7 +190,7 @@ resource "kubernetes_deployment" "api-gateway" {
       spec {
         container {
           name  = "api-gateway"
-          image = "failwin/celery-example-api-gateway:0.0.4"
+          image = "failwin/celery-example-api-gateway:0.0.5"
 
           port {
             container_port = 8000
