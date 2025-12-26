@@ -2,3 +2,9 @@
 # DO NOT commit terraform.tfvars to version control
 
 digitalocean_token = "your-digitalocean-token-here"
+
+root_domain = "domain.com"
+
+cluster_issuer_acme_email = "test@email.com"
+
+redis_subdomain= "redis"

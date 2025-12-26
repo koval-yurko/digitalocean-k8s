@@ -190,7 +190,7 @@ resource "helm_release" "n8n_my" {
     },
     {
       name  = "image.tag"
-      value = "1.121.1-own-amd64"
+      value = "1.121.1-own-3-amd64"
     },
     {
       name  = "image.pullPolicy"

@@ -103,33 +103,7 @@ resource "kubernetes_service" "redis" {
   }
 }
 
-resource "kubernetes_ingress_v1" "redis_dns" {
-  metadata {
-    name      = "redis-dns"
-    namespace = kubernetes_namespace.app.metadata[0].name
-    annotations = {
-      "kubernetes.io/ingress.class"                       = "nginx"
-      "external-dns.alpha.kubernetes.io/hostname"         = local.redis_url
-    }
-  }
-
-  spec {
-    rule {
-      host = local.redis_url
-      http {
-        path {
-          path      = "/"
-          path_type = "Prefix"
-          backend {
-            service {
-              name = kubernetes_service.redis.metadata[0].name
-              port {
-                number = 6379
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
+# Note: Redis DNS is configured via external-dns annotation on the
+# ingress-nginx-controller Service in charts-infra, not via an Ingress resource.
+# Redis uses TCP protocol (layer 4), while Ingress is for HTTP/HTTPS (layer 7).
+# Redis is exposed via TCP passthrough on the ingress controller LoadBalancer.
