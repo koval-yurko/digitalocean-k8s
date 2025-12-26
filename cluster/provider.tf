@@ -12,6 +12,7 @@ terraform {
     organization = "failwin"
 
     workspaces {
+      project = "prj-yDudnkHkj9CpBs7Z"
       name = "digitalocean-k8s-cluster"
     }
   }
