@@ -22,11 +22,27 @@ resource "helm_release" "ingress-nginx" {
       name  = "tcp.6379"
       value = "app-redis/redis:6379"
     },
-    // Add external-dns annotation for Redis subdomain
+    // Expose ClickHouse ports via the ingress controller
     {
-      name  = "controller.service.annotations.external-dns\\.alpha\\.kubernetes\\.io/hostname"
-      value = "${var.redis_subdomain}.${var.root_domain}"
+      name  = "tcp.8123"
+      value = "app-clickhouse/clickhouse:8123"
+    },
+    {
+      name  = "tcp.9000"
+      value = "app-clickhouse/clickhouse:9000"
     }
+  ]
+
+  values = [
+    yamlencode({
+      controller = {
+        service = {
+          annotations = {
+            "external-dns.alpha.kubernetes.io/hostname" = "${var.redis_subdomain}.${var.root_domain},${var.clickhouse_subdomain}.${var.root_domain}"
+          }
+        }
+      }
+    })
   ]
 
   timeout = 600

@@ -12,3 +12,8 @@ output "redis_url" {
   value       = "${var.redis_subdomain}.${var.root_domain}"
   description = "Redis service DNS hostname"
 }
+
+output "clickhouse_url" {
+  value       = "${var.clickhouse_subdomain}.${var.root_domain}"
+  description = "ClickHouse service DNS hostname"
+}

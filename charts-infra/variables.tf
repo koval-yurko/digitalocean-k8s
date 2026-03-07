@@ -20,3 +20,9 @@ variable "redis_subdomain" {
   type        = string
   default     = "redis"
 }
+
+variable "clickhouse_subdomain" {
+  description = "Subdomain for ClickHouse service"
+  type        = string
+  default     = "clickhouse"
+}
