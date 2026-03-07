@@ -47,12 +47,12 @@ resource "kubernetes_deployment" "redis" {
 
           resources {
             limits = {
-              cpu    = "500m"
-              memory = "512Mi"
+              cpu    = "600m"
+              memory = "1200Mi"
             }
             requests = {
-              cpu    = "250m"
-              memory = "256Mi"
+              cpu    = "500m"
+              memory = "1000Mi"
             }
           }
 
